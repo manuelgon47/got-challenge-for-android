@@ -14,7 +14,6 @@ import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
 
     SectionsPagerAdapter spa;
     ViewPager vp;
-    Toolbar toolbar;
+    private HomeToolbar toolbar;
     TabLayout tabLayout;
 
     @Override
@@ -47,8 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolbar = new HomeToolbar(this);
         setSpa(new SectionsPagerAdapter(getSupportFragmentManager()));
 
         setVp((ViewPager) findViewById(R.id.container));
