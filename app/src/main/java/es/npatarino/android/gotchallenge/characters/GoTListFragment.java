@@ -5,25 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import es.npatarino.android.gotchallenge.GoTCharacter;
 import es.npatarino.android.gotchallenge.R;
+import es.npatarino.android.gotchallenge.webservice.services.CharactersService;
 
 /**
  * Created by Manuel González Villegas on 22/9/16.
@@ -46,43 +33,8 @@ public class GoTListFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setAdapter(adp);
 
-        new Thread(new Runnable() {
+        new CharactersService(getActivity()).getCharacters(adp, pb);
 
-            @Override
-            public void run() {
-                String url = "https://project-8424324399725905479.firebaseio.com/characters.json?print=pretty";
-
-                URL obj = null;
-                try {
-                    obj = new URL(url);
-                    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-                    con.setRequestMethod("GET");
-                    BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String inputLine;
-                    StringBuffer response = new StringBuffer();
-                    while ((inputLine = in.readLine()) != null) {
-                        response.append(inputLine);
-                    }
-                    in.close();
-
-                    Type listType = new TypeToken<ArrayList<GoTCharacter>>() {
-                    }.getType();
-                    final List<GoTCharacter> characters = new Gson().fromJson(response.toString(), listType);
-                    GoTListFragment.this.getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            adp.addAll(characters);
-                            adp.notifyDataSetChanged();
-                            pb.hide();
-                        }
-                    });
-                } catch (IOException e) {
-                    Log.e(TAG, e.getLocalizedMessage());
-                }
-
-
-            }
-        }).start();
         return rootView;
     }
 }

@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import java.io.IOException;
 import java.net.URL;
 
-import es.npatarino.android.gotchallenge.GoTCharacter;
 import es.npatarino.android.gotchallenge.R;
+import es.npatarino.android.gotchallenge.dtos.HouseDto;
 
 /**
  * Created by Manuel González Villegas on 24/9/16.
@@ -29,13 +29,13 @@ public class GotHouseViewHolder extends RecyclerView.ViewHolder {
         imp = (ImageView) itemView.findViewById(R.id.ivBackground);
     }
 
-    public void render(final GoTCharacter.GoTHouse goTHouse) {
+    public void render(final HouseDto goTHouse) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 URL url = null;
                 try {
-                    url = new URL(goTHouse.getU());
+                    url = new URL(goTHouse.getHu());
                     final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
                     activity.runOnUiThread(new Runnable() {
                         @Override

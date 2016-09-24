@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.net.URL;
 
-import es.npatarino.android.gotchallenge.GoTCharacter;
 import es.npatarino.android.gotchallenge.R;
+import es.npatarino.android.gotchallenge.dtos.CharacterDto;
 
 /**
  * Created by Manuel González Villegas on 23/9/16.
@@ -32,7 +32,7 @@ public class GotCharacterViewHolder extends RecyclerView.ViewHolder {
         this.activity = activity;
     }
 
-    public void render(final GoTCharacter goTCharacter) {
+    public void render(final CharacterDto goTCharacter) {
         new Thread(new Runnable() {
             @Override
             public void run() {

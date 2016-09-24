@@ -15,13 +15,14 @@ import es.npatarino.android.gotchallenge.DetailActivity;
 import es.npatarino.android.gotchallenge.GoTCharacter;
 import es.npatarino.android.gotchallenge.R;
 import es.npatarino.android.gotchallenge.characters.partials.GotCharacterViewHolder;
+import es.npatarino.android.gotchallenge.dtos.CharacterDto;
 
 /**
  * Created by Manuel González Villegas on 22/9/16.
  */
 public class GoTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final List<GoTCharacter> gcs;
+    private final List<CharacterDto> gcs;
     private Activity a;
 
     public GoTAdapter(Activity activity) {
@@ -29,9 +30,9 @@ public class GoTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         a = activity;
     }
 
-    void addAll(Collection<GoTCharacter> collection) {
+    public void addAll(Collection<CharacterDto> collection) {
         for (int i = 0; i < collection.size(); i++) {
-            gcs.add((GoTCharacter) collection.toArray()[i]);
+            gcs.add((CharacterDto) collection.toArray()[i]);
         }
     }
 

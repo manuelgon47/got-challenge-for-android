@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import es.npatarino.android.gotchallenge.GoTCharacter;
 import es.npatarino.android.gotchallenge.R;
+import es.npatarino.android.gotchallenge.dtos.HouseDto;
 import es.npatarino.android.gotchallenge.houses.partials.GotHouseViewHolder;
 
 /**
@@ -19,7 +19,7 @@ import es.npatarino.android.gotchallenge.houses.partials.GotHouseViewHolder;
  */
 public class GoTHouseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final List<GoTCharacter.GoTHouse> gcs;
+    private final List<HouseDto> gcs;
     private Activity a;
 
     public GoTHouseAdapter(Activity activity) {
@@ -27,9 +27,9 @@ public class GoTHouseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         a = activity;
     }
 
-    void addAll(Collection<GoTCharacter.GoTHouse> collection) {
+    public void addAll(Collection<HouseDto> collection) {
         for (int i = 0; i < collection.size(); i++) {
-            gcs.add((GoTCharacter.GoTHouse) collection.toArray()[i]);
+            gcs.add((HouseDto) collection.toArray()[i]);
         }
     }
 
