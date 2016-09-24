@@ -49,4 +49,8 @@ public class GotHouseViewHolder extends RecyclerView.ViewHolder {
             }
         }).start();
     }
+
+    public ImageView getImp() {
+        return imp;
+    }
 }
