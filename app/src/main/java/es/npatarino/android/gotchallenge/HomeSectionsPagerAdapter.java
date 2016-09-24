@@ -42,7 +42,7 @@ public class HomeSectionsPagerAdapter extends FragmentPagerAdapter {
 
                 return "Houses";
         }
-        
+
         return null;
     }
 }
