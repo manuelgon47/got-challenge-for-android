@@ -19,10 +19,11 @@ public class HomeSectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
+
             return new GoTListFragment();
-        } else {
-            return new GoTHousesListFragment();
         }
+
+        return new GoTHousesListFragment();
     }
 
     @Override
@@ -34,10 +35,14 @@ public class HomeSectionsPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
+
                 return "Characters";
+
             case 1:
+
                 return "Houses";
         }
+        
         return null;
     }
 }
