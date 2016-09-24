@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
-    SectionsPagerAdapter spa;
+    HomeSectionsPagerAdapter spa;
     ViewPager vp;
     private HomeToolbar toolbar;
     TabLayout tabLayout;
@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         toolbar = new HomeToolbar(this);
-        setSpa(new SectionsPagerAdapter(getSupportFragmentManager()));
+        setSpa(new HomeSectionsPagerAdapter(getSupportFragmentManager()));
 
         setVp((ViewPager) findViewById(R.id.container));
         getVp().setAdapter(getSpa());
@@ -27,11 +27,11 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(getVp());
     }
 
-    public SectionsPagerAdapter getSpa() {
+    public HomeSectionsPagerAdapter getSpa() {
         return spa;
     }
 
-    public void setSpa(SectionsPagerAdapter spa) {
+    public void setSpa(HomeSectionsPagerAdapter spa) {
         this.spa = spa;
     }
 

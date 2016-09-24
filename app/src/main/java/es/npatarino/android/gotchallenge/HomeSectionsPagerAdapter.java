@@ -10,9 +10,9 @@ import es.npatarino.android.gotchallenge.houses.GoTHousesListFragment;
 /**
  * Created by Manuel González Villegas on 24/9/16.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class HomeSectionsPagerAdapter extends FragmentPagerAdapter {
 
-    public SectionsPagerAdapter(FragmentManager fm) {
+    public HomeSectionsPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
