@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.List;
 
 import es.npatarino.android.gotchallenge.DetailActivity;
-import es.npatarino.android.gotchallenge.GoTCharacter;
 import es.npatarino.android.gotchallenge.R;
 import es.npatarino.android.gotchallenge.characters.partials.GotCharacterViewHolder;
 import es.npatarino.android.gotchallenge.dtos.CharacterDto;
