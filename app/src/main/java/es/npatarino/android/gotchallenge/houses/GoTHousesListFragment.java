@@ -24,7 +24,7 @@ public class GoTHousesListFragment extends Fragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_list_houses, container, false);
         final ContentLoadingProgressBar pb = (ContentLoadingProgressBar) rootView.findViewById(R.id.pb);
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv);
 
