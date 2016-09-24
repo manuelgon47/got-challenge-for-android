@@ -26,7 +26,7 @@ public class HomeViewPager {
 
     private HomeSectionsPagerAdapter getSecctionPagerAdapter(HomeActivity activity) {
 
-        return new HomeSectionsPagerAdapter(activity.getSupportFragmentManager());
+        return new HomeSectionsPagerAdapter(activity);
     }
 
     private ViewPager getViewPager(HomeActivity activity) {

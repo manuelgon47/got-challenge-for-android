@@ -1,7 +1,6 @@
 package es.npatarino.android.gotchallenge;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import es.npatarino.android.gotchallenge.characters.GoTListFragment;
@@ -12,8 +11,11 @@ import es.npatarino.android.gotchallenge.houses.GoTHousesListFragment;
  */
 public class HomeSectionsPagerAdapter extends FragmentPagerAdapter {
 
-    public HomeSectionsPagerAdapter(FragmentManager fm) {
-        super(fm);
+    private HomeActivity homeActivity;
+    public HomeSectionsPagerAdapter(HomeActivity activity) {
+        super(activity.getSupportFragmentManager());
+
+        this.homeActivity = activity;
     }
 
     @Override
@@ -36,11 +38,11 @@ public class HomeSectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
 
-                return "Characters";
+                return homeActivity.getString(R.string.home_section_pager_characters);
 
             case 1:
 
-                return "Houses";
+                return homeActivity.getString(R.string.home_section_pager_houses);
         }
 
         return null;
