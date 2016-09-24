@@ -40,6 +40,23 @@ public class CharactersService {
         });
     }
 
+    public void getCharactersByHouse(
+            final String houseId,
+            final GoTAdapter adapter,
+            final ContentLoadingProgressBar progressBar) {
+        new CharactersClient().getCharactersByHouse(houseId, new CharactersClient.GetCharactersListener() {
+            @Override
+            public void onResponseOk(List<CharacterDto> characters) {
+                responseOk(characters, adapter, progressBar);
+            }
+
+            @Override
+            public void onError() {
+                progressBar.hide();
+            }
+        });
+    }
+
     private void responseOk(final List<CharacterDto> characters, final GoTAdapter adapter, final ContentLoadingProgressBar progressBar) {
         activity.runOnUiThread(new Runnable() {
             @Override

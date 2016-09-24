@@ -34,4 +34,10 @@ public class CharactersClient {
         new GotHttpClient(httpListener).get(GET_CHARACTERS);
     }
 
+    public void getCharactersByHouse(String houseId, GetCharactersListener listener) {
+        IGotHttpListener httpListener = new CharactersByHouseClientGotHttpClient(houseId, listener);
+
+        new GotHttpClient(httpListener).get(GET_CHARACTERS);
+    }
+
 }
