@@ -21,7 +21,7 @@ import es.npatarino.android.gotchallenge.dtos.CharacterDto;
  */
 public class GoTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final List<CharacterDto> gcs;
+    private List<CharacterDto> gcs;
     private Activity a;
 
     public GoTAdapter(Activity activity) {
@@ -62,4 +62,11 @@ public class GoTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return gcs.size();
     }
 
+    public void setGcs(List<CharacterDto> gcs) {
+        this.gcs = gcs;
+    }
+
+    public List<CharacterDto> getGcs() {
+        return gcs;
+    }
 }
