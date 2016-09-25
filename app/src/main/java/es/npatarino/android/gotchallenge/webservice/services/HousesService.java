@@ -26,7 +26,7 @@ public class HousesService {
     }
 
     public void getHouses(final GoTHouseAdapter adapter, final ContentLoadingProgressBar progressBar) {
-        new HousesClient().getHouses(new HousesClient.GetHousesListener() {
+        new HousesClient(activity).getHouses(new HousesClient.GetHousesListener() {
             @Override
             public void onResponseOk(List<HouseDto> houses) {
                 responseOk(houses, adapter, progressBar);

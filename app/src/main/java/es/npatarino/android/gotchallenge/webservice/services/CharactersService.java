@@ -27,7 +27,7 @@ public class CharactersService {
 
     public void getCharacters(final GoTAdapter adapter, final ContentLoadingProgressBar progressBar) {
 
-        new CharactersClient().getCharacters(new CharactersClient.GetCharactersListener() {
+        new CharactersClient(activity).getCharacters(new CharactersClient.GetCharactersListener() {
             @Override
             public void onResponseOk(List<CharacterDto> characters) {
                 responseOk(characters, adapter, progressBar);
@@ -44,7 +44,7 @@ public class CharactersService {
             final String houseId,
             final GoTAdapter adapter,
             final ContentLoadingProgressBar progressBar) {
-        new CharactersClient().getCharactersByHouse(houseId, new CharactersClient.GetCharactersListener() {
+        new CharactersClient(activity).getCharactersByHouse(houseId, new CharactersClient.GetCharactersListener() {
             @Override
             public void onResponseOk(List<CharacterDto> characters) {
                 responseOk(characters, adapter, progressBar);

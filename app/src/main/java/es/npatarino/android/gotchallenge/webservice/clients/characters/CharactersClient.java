@@ -1,5 +1,7 @@
 package es.npatarino.android.gotchallenge.webservice.clients.characters;
 
+import android.app.Activity;
+
 import java.util.List;
 
 import es.npatarino.android.gotchallenge.dtos.CharacterDto;
@@ -12,6 +14,8 @@ import es.npatarino.android.gotchallenge.webservice.IGotClientListener;
 public class CharactersClient {
 
     private static final String GET_CHARACTERS = "characters.json?print=pretty";
+
+    private Activity activity;
 
     public interface GetCharactersListener {
 
@@ -28,16 +32,20 @@ public class CharactersClient {
         void onError();
     }
 
+    public CharactersClient(Activity activity) {
+        this.activity = activity;
+    }
+
     public void getCharacters(GetCharactersListener listener) {
         IGotClientListener httpListener = new CharactersClientGotHttpClient(listener);
 
-        GotClientFactory.getClient(httpListener).get(GET_CHARACTERS);
+        GotClientFactory.getClient(activity, httpListener).get(GET_CHARACTERS);
     }
 
     public void getCharactersByHouse(String houseId, GetCharactersListener listener) {
         IGotClientListener httpListener = new CharactersByHouseClientGotHttpClient(houseId, listener);
 
-        GotClientFactory.getClient(httpListener).get(GET_CHARACTERS);
+        GotClientFactory.getClient(activity, httpListener).get(GET_CHARACTERS);
     }
 
 }
