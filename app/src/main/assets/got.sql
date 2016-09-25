@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS 'Character';
+DROP TABLE IF EXISTS 'House';
+
+CREATE TABLE 'Character' (
+    '_id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    'name' VARCHAR(255) NOT NULL,
+    'imageUrl' VARCHAR(255) NOT NULL,
+    'description' VARCHAR(255) NOT NULL,
+    'houseId' VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE 'House' (
+    'houseId' VARCHAR(255) NOT NULL PRIMARY KEY,
+    'houseName' VARCHAR(255) NOT NULL,
+    'houseImageUrl' VARCHAR(255) NOT NULL
+);
+
