@@ -33,7 +33,7 @@ public class CharactersByHouseClientGotHttpClient implements IGotClientListener 
             List<CharacterDto> characters = parseCharactersJson(jsonArray);
             listener.onResponseOk(characters);
         } catch (JSONException je) {
-            Log.e(Constants.TAG_DEBUG, "Error parsing the Characters json", e);
+            Log.e(Constants.TAG_DEBUG, "Error parsing the Characters json", je);
             listener.onError();
         }
     }
