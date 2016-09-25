@@ -9,6 +9,6 @@ public class GotClientFactory {
 
     public static IGotClient getClient(Activity activity, IGotClientListener listener) {
 
-        return new GotHttpClient(listener);
+        return new GotAssetsClient(activity, listener);
     }
 }

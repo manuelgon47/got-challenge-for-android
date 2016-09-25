@@ -3,7 +3,7 @@ package es.npatarino.android.gotchallenge.utils;
 import android.app.Activity;
 import android.graphics.Bitmap;
 
-import es.npatarino.android.gotchallenge.webservice.GotImageHttpClient;
+import es.npatarino.android.gotchallenge.webservice.GotImageAssetsClient;
 import es.npatarino.android.gotchallenge.webservice.IGotImageListener;
 
 /**
@@ -18,7 +18,7 @@ public class ImageFactory {
     }
 
     public void getImage(Activity activity, String url, final ImageFactoryListener listener) {
-        new GotImageHttpClient(new IGotImageListener() {
+        new GotImageAssetsClient(activity, new IGotImageListener() {
             @Override
             public void onImageRetrieved(Bitmap bitmap) {
                 listener.onImageRetrieved(bitmap);
@@ -28,7 +28,7 @@ public class ImageFactory {
             public void onError() {
                 listener.onError();
             }
-        }).getImageBitmap(url);
+        }).getImageBitmap("imagen_no_disponible.png");
     }
 
 }
