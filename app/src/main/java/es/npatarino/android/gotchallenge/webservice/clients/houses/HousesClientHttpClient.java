@@ -33,7 +33,7 @@ public class HousesClientHttpClient implements IGotClientListener {
             List<HouseDto> characters = parseHousesJson(jsonArray);
             listener.onResponseOk(characters);
         } catch (JSONException je) {
-            Log.e(Constants.TAG_DEBUG, "Error parsing the Houses json");
+            Log.e(Constants.TAG_DEBUG, "Error parsing the Houses json", e);
             listener.onError();
         }
     }
