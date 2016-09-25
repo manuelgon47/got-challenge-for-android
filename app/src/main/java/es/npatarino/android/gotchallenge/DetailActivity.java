@@ -1,16 +1,13 @@
 package es.npatarino.android.gotchallenge;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.net.URL;
+import es.npatarino.android.gotchallenge.webservice.services.GotCharacterImageService;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -37,25 +34,23 @@ public class DetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        new Thread(new Runnable() {
+        new GotCharacterImageService().getCharacterImage(i, new GotCharacterImageService.GotCharacterImageServiceListener() {
             @Override
-            public void run() {
-                URL url = null;
-                try {
-                    url = new URL(i);
-                    final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                    DetailActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ivp.setImageBitmap(bmp);
-                            tvn.setText(n);
-                            tvd.setText(d);
-                        }
-                    });
-                } catch (IOException e) {
-                    Log.e(TAG, e.getLocalizedMessage());
-                }
+            public void onImageRetrieved(final Bitmap bitmap) {
+                DetailActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ivp.setImageBitmap(bitmap);
+                        tvn.setText(n);
+                        tvd.setText(d);
+                    }
+                });
             }
-        }).start();
+
+            @Override
+            public void onError() {
+
+            }
+        });
     }
 }
