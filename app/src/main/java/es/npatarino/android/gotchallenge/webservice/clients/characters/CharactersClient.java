@@ -3,8 +3,8 @@ package es.npatarino.android.gotchallenge.webservice.clients.characters;
 import java.util.List;
 
 import es.npatarino.android.gotchallenge.dtos.CharacterDto;
-import es.npatarino.android.gotchallenge.webservice.GotHttpClient;
-import es.npatarino.android.gotchallenge.webservice.IGotHttpListener;
+import es.npatarino.android.gotchallenge.webservice.GotClientFactory;
+import es.npatarino.android.gotchallenge.webservice.IGotClientListener;
 
 /**
  * Created by Manuel González Villegas on 24/9/16.
@@ -29,15 +29,15 @@ public class CharactersClient {
     }
 
     public void getCharacters(GetCharactersListener listener) {
-        IGotHttpListener httpListener = new CharactersClientGotHttpClient(listener);
+        IGotClientListener httpListener = new CharactersClientGotHttpClient(listener);
 
-        new GotHttpClient(httpListener).get(GET_CHARACTERS);
+        GotClientFactory.getClient(httpListener).get(GET_CHARACTERS);
     }
 
     public void getCharactersByHouse(String houseId, GetCharactersListener listener) {
-        IGotHttpListener httpListener = new CharactersByHouseClientGotHttpClient(houseId, listener);
+        IGotClientListener httpListener = new CharactersByHouseClientGotHttpClient(houseId, listener);
 
-        new GotHttpClient(httpListener).get(GET_CHARACTERS);
+        GotClientFactory.getClient(httpListener).get(GET_CHARACTERS);
     }
 
 }

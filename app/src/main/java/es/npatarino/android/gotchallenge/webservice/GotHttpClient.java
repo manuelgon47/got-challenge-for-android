@@ -13,25 +13,27 @@ import es.npatarino.android.gotchallenge.utils.Constants;
 /**
  * Created by Manuel González Villegas on 24/9/16.
  */
-public class GotHttpClient {
+public class GotHttpClient implements IGotClient {
 
     private static final String BASE_URL = "https://project-8424324399725905479.firebaseio.com/";
 
-    private IGotHttpListener listener;
+    private IGotClientListener listener;
 
     /**
      * Constructor with the listener
      *
      * @param listener Listener to handle the response
      */
-    public GotHttpClient(IGotHttpListener listener) {
+    public GotHttpClient(IGotClientListener listener) {
         this.listener = listener;
     }
 
+    @Override
     public void get(String endpoint) {
         doRequest("GET", endpoint);
     }
 
+    @Override
     public void post(String endpoint) {
         doRequest("POST", endpoint);
     }
@@ -53,7 +55,7 @@ public class GotHttpClient {
                     }
                     in.close();
 
-                    listener.responseOk(response);
+                    listener.responseOk(response.toString());
                 } catch (IOException e) {
                     Log.e(Constants.TAG_DEBUG, "Error making a request", e);
                     listener.responseError();

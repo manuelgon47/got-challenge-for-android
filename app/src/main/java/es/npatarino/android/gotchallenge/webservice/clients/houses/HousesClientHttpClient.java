@@ -12,13 +12,13 @@ import java.util.Map;
 
 import es.npatarino.android.gotchallenge.dtos.HouseDto;
 import es.npatarino.android.gotchallenge.utils.Constants;
-import es.npatarino.android.gotchallenge.webservice.IGotHttpListener;
+import es.npatarino.android.gotchallenge.webservice.IGotClientListener;
 import es.npatarino.android.gotchallenge.webservice.parsers.HouseDtoJsonParser;
 
 /**
  * Created by Manuel González Villegas on 24/9/16.
  */
-public class HousesClientHttpClient implements IGotHttpListener {
+public class HousesClientHttpClient implements IGotClientListener {
 
     private HousesClient.GetHousesListener listener;
 
@@ -27,7 +27,7 @@ public class HousesClientHttpClient implements IGotHttpListener {
     }
 
     @Override
-    public void responseOk(StringBuffer response) {
+    public void responseOk(String response) {
         try {
             JSONArray jsonArray = parseHouses(response);
             List<HouseDto> characters = parseHousesJson(jsonArray);
@@ -43,9 +43,9 @@ public class HousesClientHttpClient implements IGotHttpListener {
         listener.onError();
     }
 
-    private JSONArray parseHouses(StringBuffer response) throws JSONException {
+    private JSONArray parseHouses(String response) throws JSONException {
 
-        return new JSONArray(response.toString());
+        return new JSONArray(response);
     }
 
     private List<HouseDto> parseHousesJson(JSONArray jsonArray) {

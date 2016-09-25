@@ -3,8 +3,8 @@ package es.npatarino.android.gotchallenge.webservice.clients.houses;
 import java.util.List;
 
 import es.npatarino.android.gotchallenge.dtos.HouseDto;
-import es.npatarino.android.gotchallenge.webservice.GotHttpClient;
-import es.npatarino.android.gotchallenge.webservice.IGotHttpListener;
+import es.npatarino.android.gotchallenge.webservice.GotClientFactory;
+import es.npatarino.android.gotchallenge.webservice.IGotClientListener;
 
 /**
  * Created by Manuel González Villegas on 24/9/16.
@@ -19,8 +19,8 @@ public class HousesClient {
     }
 
     public void getHouses(GetHousesListener listener) {
-        IGotHttpListener httpListener = new HousesClientHttpClient(listener);
+        IGotClientListener httpListener = new HousesClientHttpClient(listener);
 
-        new GotHttpClient(httpListener).get(GET_HOUSES);
+        GotClientFactory.getClient(httpListener).get(GET_HOUSES);
     }
 }

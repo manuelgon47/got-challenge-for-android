@@ -10,13 +10,13 @@ import java.util.List;
 
 import es.npatarino.android.gotchallenge.dtos.CharacterDto;
 import es.npatarino.android.gotchallenge.utils.Constants;
-import es.npatarino.android.gotchallenge.webservice.IGotHttpListener;
+import es.npatarino.android.gotchallenge.webservice.IGotClientListener;
 import es.npatarino.android.gotchallenge.webservice.parsers.CharacterDtoJsonParser;
 
 /**
  * Created by Manuel González Villegas on 24/9/16.
  */
-public class CharactersByHouseClientGotHttpClient implements IGotHttpListener {
+public class CharactersByHouseClientGotHttpClient implements IGotClientListener {
 
     private CharactersClient.GetCharactersListener listener;
     private String houseId;
@@ -27,7 +27,7 @@ public class CharactersByHouseClientGotHttpClient implements IGotHttpListener {
     }
 
     @Override
-    public void responseOk(StringBuffer response) {
+    public void responseOk(String response) {
         try {
             JSONArray jsonArray = parseCharacters(response);
             List<CharacterDto> characters = parseCharactersJson(jsonArray);
@@ -43,9 +43,9 @@ public class CharactersByHouseClientGotHttpClient implements IGotHttpListener {
         listener.onError();
     }
 
-    private JSONArray parseCharacters(StringBuffer response) throws JSONException {
+    private JSONArray parseCharacters(String response) throws JSONException {
 
-        return new JSONArray(response.toString());
+        return new JSONArray(response);
     }
 
     private List<CharacterDto> parseCharactersJson(JSONArray jsonArray) {
