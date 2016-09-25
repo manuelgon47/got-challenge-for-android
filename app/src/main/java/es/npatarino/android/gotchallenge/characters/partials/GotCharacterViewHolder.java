@@ -2,18 +2,14 @@ package es.npatarino.android.gotchallenge.characters.partials;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.net.URL;
-
 import es.npatarino.android.gotchallenge.R;
 import es.npatarino.android.gotchallenge.dtos.CharacterDto;
+import es.npatarino.android.gotchallenge.webservice.services.GotCharacterImageService;
 
 /**
  * Created by Manuel González Villegas on 23/9/16.
@@ -33,25 +29,23 @@ public class GotCharacterViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void render(final CharacterDto goTCharacter) {
-        new Thread(new Runnable() {
+        new GotCharacterImageService().getCharacterImage(goTCharacter.getIu(), new GotCharacterImageService.GotCharacterImageServiceListener() {
             @Override
-            public void run() {
-                URL url = null;
-                try {
-                    url = new URL(goTCharacter.getIu());
-                    final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            imp.setImageBitmap(bmp);
-                            tvn.setText(goTCharacter.getN());
-                        }
-                    });
-                } catch (IOException e) {
-                    Log.e(TAG, e.getLocalizedMessage());
-                }
+            public void onImageRetrieved(final Bitmap bitmap) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        imp.setImageBitmap(bitmap);
+                        tvn.setText(goTCharacter.getN());
+                    }
+                });
             }
-        }).start();
+
+            @Override
+            public void onError() {
+                // Do nothing here. May be it sould display a toast message
+            }
+        });
     }
 
     // **********************************
