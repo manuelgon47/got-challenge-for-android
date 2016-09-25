@@ -26,7 +26,7 @@ public class GotHouseViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void render(final HouseDto goTHouse) {
-        new GotHouseImageService().getHouseImage(goTHouse.getHu(), new GotHouseImageService.GotHouseImageServiceListener() {
+        new GotHouseImageService(activity).getHouseImage(goTHouse.getHu(), new GotHouseImageService.GotHouseImageServiceListener() {
             @Override
             public void onImageRetrieved(final Bitmap bitmap) {
                 activity.runOnUiThread(new Runnable() {

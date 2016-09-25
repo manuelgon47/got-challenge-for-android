@@ -35,7 +35,7 @@ public class DetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        new GotCharacterImageService().getCharacterImage(i, new GotCharacterImageService.GotCharacterImageServiceListener() {
+        new GotCharacterImageService(this).getCharacterImage(i, new GotCharacterImageService.GotCharacterImageServiceListener() {
             @Override
             public void onImageRetrieved(final Bitmap bitmap) {
                 DetailActivity.this.runOnUiThread(new Runnable() {

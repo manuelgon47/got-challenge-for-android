@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 /**
  * Created by Manuel González Villegas on 25/9/16.
  */
-public interface IGotImageHttpListener {
+public interface IGotImageListener {
     void onImageRetrieved(Bitmap bitmap);
 
     void onError();

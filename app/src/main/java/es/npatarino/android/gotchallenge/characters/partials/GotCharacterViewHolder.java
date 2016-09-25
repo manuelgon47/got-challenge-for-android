@@ -29,7 +29,7 @@ public class GotCharacterViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void render(final CharacterDto goTCharacter) {
-        new GotCharacterImageService().getCharacterImage(goTCharacter.getIu(), new GotCharacterImageService.GotCharacterImageServiceListener() {
+        new GotCharacterImageService(activity).getCharacterImage(goTCharacter.getIu(), new GotCharacterImageService.GotCharacterImageServiceListener() {
             @Override
             public void onImageRetrieved(final Bitmap bitmap) {
                 activity.runOnUiThread(new Runnable() {

@@ -1,5 +1,6 @@
 package es.npatarino.android.gotchallenge.webservice.services;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 
 import es.npatarino.android.gotchallenge.utils.ImageFactory;
@@ -9,13 +10,19 @@ import es.npatarino.android.gotchallenge.utils.ImageFactory;
  */
 public class GotHouseImageService {
 
+    private Activity activity;
+
     public interface GotHouseImageServiceListener {
         void onImageRetrieved(Bitmap bitmap);
         void onError();
     }
 
+    public GotHouseImageService(Activity activity) {
+        this.activity = activity;
+    }
+
     public void getHouseImage(String imageUrl, final GotHouseImageServiceListener listener) {
-        new ImageFactory().getImage(imageUrl, new ImageFactory.ImageFactoryListener() {
+        new ImageFactory().getImage(activity, imageUrl, new ImageFactory.ImageFactoryListener() {
             @Override
             public void onImageRetrieved(Bitmap bitmap) {
                 listener.onImageRetrieved(bitmap);
