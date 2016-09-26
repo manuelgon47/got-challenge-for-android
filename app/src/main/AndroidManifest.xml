@@ -15,6 +15,10 @@
             android:parentActivityName=".HomeActivity">
         </activity>
         <activity
+            android:name=".ParallaxDetailActivity"
+            android:parentActivityName=".HomeActivity">
+        </activity>
+        <activity
             android:name=".DetailHouseActivity"
             android:parentActivityName=".HomeActivity">
         </activity>

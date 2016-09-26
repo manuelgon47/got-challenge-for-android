@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import es.npatarino.android.gotchallenge.DetailActivity;
+import es.npatarino.android.gotchallenge.ParallaxDetailActivity;
 import es.npatarino.android.gotchallenge.R;
 import es.npatarino.android.gotchallenge.characters.partials.GotCharacterViewHolder;
 import es.npatarino.android.gotchallenge.dtos.CharacterDto;
@@ -48,7 +48,7 @@ public class GoTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ((GotCharacterViewHolder) holder).getImp().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                Intent intent = new Intent(((GotCharacterViewHolder) holder).itemView.getContext(), DetailActivity.class);
+                Intent intent = new Intent(((GotCharacterViewHolder) holder).itemView.getContext(), ParallaxDetailActivity.class);
                 intent.putExtra("description", gcs.get(position).getD());
                 intent.putExtra("name", gcs.get(position).getN());
                 intent.putExtra("imageUrl", gcs.get(position).getIu());
